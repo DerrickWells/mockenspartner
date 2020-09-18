@@ -1,0 +1,238 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: local-dev
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: ${app_name}
+  namespace: local-dev
+spec:
+  selector:
+    app: ${app_name}
+  ports:
+  - port: 3000
+    nodePort: ${node_port}
+  type: NodePort
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: ${app_name}-v2
+  namespace: local-dev
+spec:
+  selector:
+    app: ${app_name}-v2
+  ports:
+  - port: 3000
+    nodePort: ${node_2_port}
+  type: NodePort
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: ${app_name}-v3
+  namespace: local-dev
+spec:
+  selector:
+    app: ${app_name}-v3
+  ports:
+  - port: 3000
+    nodePort: ${node_3_port}
+  type: NodePort
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: ${app_name}-v4
+  namespace: local-dev
+spec:
+  selector:
+    app: ${app_name}-v4
+  ports:
+  - port: 3000
+    nodePort: ${node_4_port}
+  type: NodePort
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: ${app_name}-v5
+  namespace: local-dev
+spec:
+  selector:
+    app: ${app_name}-v5
+  ports:
+  - port: 3000
+    nodePort: ${node_5_port}
+  type: NodePort
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: ${app_name}-v6
+  namespace: local-dev
+spec:
+  selector:
+    app: ${app_name}-v6
+  ports:
+  - port: 3000
+    nodePort: ${node_6_port}
+  type: NodePort
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ${app_name}
+  namespace: local-dev
+  labels:
+    app: ${app_name}
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: ${app_name}
+  template:
+    metadata:
+      labels:
+        app: ${app_name}
+    spec:
+      containers:
+        - name: mockenspartner
+          image: ${docker_image}
+          env:
+          - name: LAT
+            value: "1000"
+          ports:
+          - containerPort: 3000
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ${app_name}-v2
+  namespace: local-dev
+  labels:
+    app: ${app_name}-v2
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: ${app_name}-v2
+  template:
+    metadata:
+      labels:
+        app: ${app_name}-v2
+    spec:
+      containers:
+        - name: mockenspartner-v2
+          image: ${docker_image}:v2
+          env:
+          - name: LAT
+            value: "2000"
+          ports:
+          - containerPort: 3000
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ${app_name}-v3
+  namespace: local-dev
+  labels:
+    app: ${app_name}-v3
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: ${app_name}-v3
+  template:
+    metadata:
+      labels:
+        app: ${app_name}-v3
+    spec:
+      containers:
+        - name: mockenspartner-v3
+          image: ${docker_image}:v3
+          env:
+          - name: LAT
+            value: "3000"
+          ports:
+          - containerPort: 3000
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ${app_name}-v4
+  namespace: local-dev
+  labels:
+    app: ${app_name}-v4
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: ${app_name}-v4
+  template:
+    metadata:
+      labels:
+        app: ${app_name}-v4
+    spec:
+      containers:
+        - name: mockenspartner-v4
+          image: ${docker_image}:v4
+          env:
+          - name: LAT
+            value: "4000"
+          ports:
+          - containerPort: 3000
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ${app_name}-v5
+  namespace: local-dev
+  labels:
+    app: ${app_name}-v5
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: ${app_name}-v5
+  template:
+    metadata:
+      labels:
+        app: ${app_name}-v5
+    spec:
+      containers:
+        - name: mockenspartner-v5
+          image: ${docker_image}:v5
+          env:
+          - name: LAT
+            value: "5000"
+          ports:
+          - containerPort: 3000
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ${app_name}-v6
+  namespace: local-dev
+  labels:
+    app: ${app_name}-v6
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: ${app_name}-v6
+  template:
+    metadata:
+      labels:
+        app: ${app_name}-v6
+    spec:
+      containers:
+        - name: mockenspartner-v6
+          image: ${docker_image}:v6
+          env:
+          - name: LAT
+            value: "6000"
+          ports:
+          - containerPort: 3000
