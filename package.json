@@ -1,0 +1,23 @@
+{
+  "name": "ens_receiver",
+  "version": "1.0.0",
+  "description": "Mock API microservice that takes an encrypted REST API and returns a parsed GUID string to confirm it was received by 3rd party subscribers. (Electronic Notification System is the 'ens' in mock_ens_partner)",
+  "main": "app.js",
+  "scripts": {
+    "dev": "nodemon app.js",
+    "start": "npm install && nodemon ./bin/www"
+  },
+  "author": "Derrick Wells",
+  "license": "UNLICENSED",
+  "private": true,
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "cookie-parser": "~1.4.3",
+    "dateformat": "^3.0.3",
+    "debug": "~2.6.9",
+    "express": "~4.16.0",
+    "http-errors": "~1.6.2",
+    "morgan": "~1.9.0",
+    "nodemon": "^1.18.9"
+  }
+}
