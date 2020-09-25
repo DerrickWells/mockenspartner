@@ -1,5 +1,5 @@
 {
-  "name": "ens_receiver",
+  "name": "mock_ens_receiver",
   "version": "1.0.0",
   "description": "Mock API microservice that takes an encrypted REST API and returns a parsed GUID string to confirm it was received by 3rd party subscribers. (Electronic Notification System is the 'ens' in mock_ens_partner)",
   "main": "app.js",
